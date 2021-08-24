@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
+const { dbConnection } = require("../db/config");
 
 const port = process.env.PORT || 8081;
 
@@ -10,11 +11,18 @@ class Server {
     this.port = port;
     this.usersPath = "/api/users";
 
+    //connect DB
+    this.connectDB();
+
     //middlewares
     this.middlewares();
 
     //app routes
     this.routes();
+  }
+
+  async connectDB() {
+    await dbConnection();
   }
 
   middlewares() {
