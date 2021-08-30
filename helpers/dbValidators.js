@@ -1,4 +1,4 @@
-const { Role, User } = require("../models");
+const { Role, User, Category, Product } = require("../models");
 
 const isRoleValid = async (role = "") => {
   const roleExists = await Role.findOne({ role });
@@ -15,4 +15,20 @@ const userExistByID = async (id = "") => {
   if (!userExists) throw new Error(`id is already used`);
 };
 
-module.exports = { isRoleValid, isEmailValid, userExistByID };
+const categoryExistByID = async (id = "") => {
+  const categoryExists = await Category.findById(id);
+  if (!categoryExists) throw new Error(`${id} is already used`);
+};
+
+const productExistByID = async (id = "") => {
+  const productExists = await Product.findById(id);
+  if (!productExists) throw new Error(`${id} is already used in a product`);
+};
+
+module.exports = {
+  isRoleValid,
+  isEmailValid,
+  userExistByID,
+  categoryExistByID,
+  productExistByID,
+};

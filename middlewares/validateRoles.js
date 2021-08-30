@@ -5,9 +5,9 @@ const validateAdminRole = (req, res = response, next) => {
     return res.status(500).json({ message: "auth error" });
   }
 
-  const { rol, name } = req.user;
+  const { role } = req.user;
 
-  if (rol !== "ADMIN_ROLE") {
+  if (role !== "ADMIN_ROLE") {
     return res.status(401).json({ message: "insufficient permission" });
   }
 

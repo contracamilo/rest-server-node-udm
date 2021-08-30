@@ -42,7 +42,7 @@ const putUsers = async (req, res = response) => {
     rest.password = encryptPass(password);
   }
 
-  const user = await User.findByIdAndUpdate(id, rest);
+  const user = await User.findByIdAndUpdate(id, rest, { new: true });
 
   res.status(200).json({
     ok: true,
@@ -60,14 +60,16 @@ const patchUsers = (req, res = response) => {
 const deleteUsers = async (req, res = response) => {
   const { id } = req.params;
 
-  // delete from DB
-
   // turn user status to false
-  const user = await User.findByIdAndUpdate(id, { status: false });
+  const category = await User.findByIdAndUpdate(
+    id,
+    { status: false },
+    { new: true }
+  );
 
   res.status(200).json({
     ok: "inactive user",
-    user,
+    category,
   });
 };
 

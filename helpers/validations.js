@@ -10,20 +10,16 @@ const userSchemaValidations = {
       errorMessage: "Password should be at least 6 chars long",
     },
   },
-  /*// 
-  email: {
-    isEmail: true,
-    errorMessage: "must be a valid email",
-  }, */
-  /*// code of reference roles will be validated against the DB
-  role: {
-    isIn: {
-      options: [["USER_ROLE", "ADMIN_ROLE"]],
-    },
-    errorMessage: "invalid role",
-  },*/
+};
+
+const categorySchemaValidations = {
+  name: {
+    isEmpty: false,
+    errorMessage: "Name is required",
+  },
 };
 
 module.exports = {
   userSchemaValidations,
+  categorySchemaValidations,
 };

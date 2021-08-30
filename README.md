@@ -3,9 +3,7 @@
 Don´t forget install mongoDB and create a local instance.
 
 More info: [MongoDB Docs](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
-
-rogram Files\MongoDB\Server\4.4\bin\mongod.exe" --dbpath="c:\data\db"
-```
+Services Documentation: [Postman Docs](https://documenter.getpostman.com/view/14044959/TzzHjXxS)
 
 To run this project run the following commands on console.
 
