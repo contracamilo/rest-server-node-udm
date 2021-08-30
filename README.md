@@ -3,7 +3,11 @@
 Don´t forget install mongoDB and create a local instance.
 
 More info: [MongoDB Docs](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-windows/)
+<<<<<<< HEAD
 Services Documentation: [Postman Docs](https://documenter.getpostman.com/view/14044959/TzzHjXxS)
+=======
+
+>>>>>>> 87903a5056a27196c5d4b44e67557f724a934665
 
 To run this project run the following commands on console.
 
