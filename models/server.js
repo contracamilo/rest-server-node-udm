@@ -11,10 +11,11 @@ class Server {
     this.port = port;
 
     this.paths = {
-      users: "/api/users",
       auth: "/api/auth",
       categories: "/api/categories",
       products: "/api/products",
+      search: "/api/search",
+      users: "/api/users",
     };
 
     //connect DB
@@ -42,10 +43,12 @@ class Server {
   }
 
   routes() {
-    this.app.use(this.paths.users, require("../routes/user"));
-    this.app.use(this.paths.auth, require("../routes/auth"));
-    this.app.use(this.paths.categories, require("../routes/categories"));
-    this.app.use(this.paths.products, require("../routes/products"));
+    const { app, paths } = this;
+    app.use(paths.auth, require("../routes/auth"));
+    app.use(paths.categories, require("../routes/categories"));
+    app.use(paths.products, require("../routes/products"));
+    app.use(paths.search, require("../routes/search"));
+    app.use(paths.users, require("../routes/user"));
   }
 
   listen() {
