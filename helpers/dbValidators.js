@@ -25,10 +25,22 @@ const productExistByID = async (id = "") => {
   if (!productExists) throw new Error(`${id} is already used in a product`);
 };
 
+const allowedCols = (collection = "", allowedCols = []) => {
+  const isAllowed = allowedCols.includes(collection);
+  if (!isAllowed) {
+    throw new Error(
+      `this ${collection} is not allowed, must be ${allowedCols}`
+    );
+  }
+
+  return true;
+};
+
 module.exports = {
   isRoleValid,
   isEmailValid,
   userExistByID,
   categoryExistByID,
   productExistByID,
+  allowedCols,
 };

@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const { dbConnection } = require("../db/config");
+const fileUpload = require("express-fileupload");
 
 const port = process.env.PORT || 8081;
 
@@ -15,6 +16,7 @@ class Server {
       categories: "/api/categories",
       products: "/api/products",
       search: "/api/search",
+      uploads: "/api/uploads",
       users: "/api/users",
     };
 
@@ -40,6 +42,15 @@ class Server {
 
     app.use(cors());
     app.use(express.static("public"));
+
+    // file upload
+    app.use(
+      fileUpload({
+        useTempFiles: true,
+        tempFileDir: "/tmp/",
+        createParentPath: true,
+      })
+    );
   }
 
   routes() {
@@ -48,6 +59,7 @@ class Server {
     app.use(paths.categories, require("../routes/categories"));
     app.use(paths.products, require("../routes/products"));
     app.use(paths.search, require("../routes/search"));
+    app.use(paths.uploads, require("../routes/upload"));
     app.use(paths.users, require("../routes/user"));
   }
 

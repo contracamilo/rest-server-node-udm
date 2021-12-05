@@ -5,6 +5,9 @@
 
 ### Custom ###
 /output/*.txt
+/uploads/products/**.*
+/uploads/users/**.*
+
 
 ### Node ###
 # Logs
